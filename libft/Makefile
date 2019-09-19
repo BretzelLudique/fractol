@@ -6,7 +6,7 @@
 #    By: czhang <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/07 19:51:13 by czhang            #+#    #+#              #
-#    Updated: 2019/07/23 05:41:55 by czhang           ###   ########.fr        #
+#    Updated: 2019/09/19 06:35:31 by czhang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ FILE = ft_strlcat.c\
 	   ft_strcmp.c\
 	   ft_strncmp.c\
 	   ft_atoi.c\
+	   ft_atof.c\
 	   ft_isalpha.c\
 	   ft_isdigit.c\
 	   ft_isalnum.c\
@@ -56,11 +57,14 @@ FILE = ft_strlcat.c\
 	   ft_strtrim.c\
 	   ft_strsplit.c\
 	   ft_cntwrd.c\
+	   ft_cntwrd2.c\
+	   ft_cntwrdn.c\
 	   ft_itoa.c\
 	   ft_putchar.c\
 	   ft_putstr.c\
 	   ft_putendl.c\
 	   ft_putnbr.c\
+	   ft_putnbrb.c\
 	   ft_putchar_fd.c\
 	   ft_putstr_fd.c\
 	   ft_putendl_fd.c\
@@ -71,6 +75,7 @@ FILE = ft_strlcat.c\
 	   ft_lstadd.c\
 	   ft_lstiter.c\
 	   ft_lstmap.c\
+	   bad_ft_putnbrf.c
 
 INC = -I includes
 
@@ -95,6 +100,7 @@ objs/%.o: %.c
 
 clean:
 	$(RM) $(OBJ)
+	$(RM) -d objs
 
 fclean: clean
 	$(RM) $(NAME)

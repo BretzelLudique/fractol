@@ -6,19 +6,22 @@
 #    By: czhang <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/07 19:51:13 by czhang            #+#    #+#              #
-#    Updated: 2019/07/23 05:51:56 by czhang           ###   ########.fr        #
+#    Updated: 2019/09/04 18:41:27 by czhang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fdf
+NAME = fractol
 
 LIB = libft/libft.a
 
 FILE =	main.c\
-		resize.c\
 		draw.c\
+		key_esc.c\
+		#get_next_line.c\
+		parse.c\
+		#resize.c\
 		tab_type.c\
-		coord.c\
+		coord.c\#
 
 INC = -I libft/includes
 
@@ -26,7 +29,7 @@ SRC = $(FILE:%=%)
 
 OBJ = $(FILE:%.c=objs/%.o)
 
-FLAG = #-Wall -Werror -Wextra #-g3 -fsanitize=address,undefined
+FLAG = -Wall -Werror -Wextra
 
 CC = gcc $(FLAG) $(INC)
 
@@ -35,7 +38,7 @@ RM = rm -f
 all: $(NAME)
 
 $(NAME) : $(LIB) $(OBJ)
-	$(CC) -o $@ $(OBJ) -L libft/ -lft -framework OpenGL -framework Appkit
+	$(CC) -o $@ $(OBJ) -L libft/ -lft -lmlx -framework OpenGL -framework Appkit
 
 $(LIB) :
 	make -C libft/ all

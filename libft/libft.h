@@ -6,7 +6,7 @@
 /*   By: czhang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 05:29:12 by czhang            #+#    #+#             */
-/*   Updated: 2018/11/22 06:02:37 by czhang           ###   ########.fr       */
+/*   Updated: 2019/09/19 06:36:47 by czhang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ char			*ft_strnstr(const char *s, const char *needle, size_t len);
 int				ft_strcmp(const char *s1, const char *s2);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 int				ft_atoi(const char *str);
+double			ft_atof(const char *str);
 int				ft_isalpha(int c);
 int				ft_isdigit(int c);
 int				ft_isalnum(int c);
@@ -70,11 +71,15 @@ char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_strtrim(char const *s);
 char			**ft_strsplit(char const *s, char c);
 int				ft_cntwrd(char const *s, char c);
+int				ft_cntwrd2(char const *s, char c, char c2);
+int				ft_cntwrdn(char const *s, char c, char d, int len);
 char			*ft_itoa(int n);
 void			ft_putchar(char c);
 void			ft_putstr(char const *str);
 void			ft_putendl(char const *s);
 void			ft_putnbr(int n);
+void			bad_ft_putnbrf(float n);
+void			ft_putnbrb(const char *s, int n);
 void			ft_putchar_fd(char c, int fd);
 void			ft_putstr_fd(char const *s, int fd);
 void			ft_putendl_fd(char const *s, int fd);
