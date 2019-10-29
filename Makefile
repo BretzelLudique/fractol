@@ -6,7 +6,7 @@
 #    By: czhang <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/07 19:51:13 by czhang            #+#    #+#              #
-#    Updated: 2019/09/04 18:41:27 by czhang           ###   ########.fr        #
+#    Updated: 2019/10/29 20:37:33 by czhang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ LIB = libft/libft.a
 FILE =	main.c\
 		draw.c\
 		key_esc.c\
+		mandelbrot.c\
 		#get_next_line.c\
 		parse.c\
 		#resize.c\
@@ -29,7 +30,7 @@ SRC = $(FILE:%=%)
 
 OBJ = $(FILE:%.c=objs/%.o)
 
-FLAG = -Wall -Werror -Wextra
+FLAG = #-Wall -Werror -Wextra
 
 CC = gcc $(FLAG) $(INC)
 
