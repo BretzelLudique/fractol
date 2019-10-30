@@ -1,28 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_esc.c                                          :+:      :+:    :+:   */
+/*   zoom.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: czhang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/02 06:22:06 by czhang            #+#    #+#             */
-/*   Updated: 2019/10/30 20:28:48 by czhang           ###   ########.fr       */
+/*   Created: 2019/10/30 17:18:04 by czhang            #+#    #+#             */
+/*   Updated: 2019/10/30 17:40:09 by czhang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	interrupt(int key, void *p)
-{
-	t_mlx	*r;
 
-	r = (t_mlx *)p;
-	if (key == 53)
-	{
-		mlx_destroy_image(r->mlx_ptr, r->img.img_ptr);
-		mlx_destroy_window(r->mlx_ptr, r->win_ptr);
-		exit(EXIT_SUCCESS);
-	}
-	(void)p;
-	return (0);
-}
