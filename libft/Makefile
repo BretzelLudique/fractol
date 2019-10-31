@@ -6,7 +6,7 @@
 #    By: czhang <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/07 19:51:13 by czhang            #+#    #+#              #
-#    Updated: 2019/09/19 06:35:31 by czhang           ###   ########.fr        #
+#    Updated: 2019/10/29 20:38:13 by czhang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,7 +75,7 @@ FILE = ft_strlcat.c\
 	   ft_lstadd.c\
 	   ft_lstiter.c\
 	   ft_lstmap.c\
-	   bad_ft_putnbrf.c
+	 #  bad_ft_putnbrf.c
 
 INC = -I includes
 

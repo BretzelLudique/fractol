@@ -6,7 +6,7 @@
 	/*   By: czhang <marvin@42.fr>                      +#+  +:+       +#+        */
 	/*                                                +#+#+#+#+#+   +#+           */
 	/*   Created: 2019/07/05 04:44:18 by czhang            #+#    #+#             */
-/*   Updated: 2019/10/30 22:01:56 by czhang           ###   ########.fr       */
+/*   Updated: 2019/10/31 18:19:14 by czhang           ###   ########.fr       */
 	/*                                                                            */
 	/* ************************************************************************** */
 
@@ -35,13 +35,13 @@ typedef struct	s_mandel
 	double		tmp;
 	int			i;
 	int			iter_max;
-	double		*x1;
-	double		*x2;
-	double		*y1;
-	double		*y2;
+	double		x1;
+	double		x2;
+	double		y1;
+	double		y2;
 	double		zoom_x;
 	double		zoom_y;
-	int			*zoom_level;
+	int			zoom_level;
 }				t_mandel;
 
 typedef struct	s_img
@@ -55,15 +55,16 @@ typedef struct	s_img
 
 typedef	struct	s_mlx
 {
+	int			code_f;
 	void		*mlx_ptr;
 	void		*win_ptr;
 	t_img		img;
-	t_mandel	fract;
+	t_mandel	*fract;
 }				t_mlx;
 
 int	fract(int zoom_level, t_mlx r);
 int	draw_pixel(int x, int y, int blue, t_mlx r);
 int	interrupt(int key, void *p);
-int	zoom(int key, int x, int y, void *p);
+int	zoom(int key, int x, int y, t_mlx *r);
 
 #endif
