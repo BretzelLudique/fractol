@@ -21,7 +21,7 @@ static t_mlx	create_mlx(void)
 	r.win_ptr = mlx_new_window(r.mlx_ptr, WIDTH, HEIGHT, "TEST");
 	r.img.img_ptr = mlx_new_image(r.mlx_ptr, WIDTH, HEIGHT);
 	r.img.img_str = mlx_get_data_addr(r.img.img_ptr,
-		&r.img.bpp, &r.img.size_line, &r.img.endian);
+			&r.img.bpp, &r.img.size_line, &r.img.endian);
 	r.fract = (t_mandel *)malloc(sizeof(t_mandel));
 	return (r);
 }
@@ -52,7 +52,7 @@ int	zoom(int key, int x, int y, t_mlx *r)
 		r->fract->y2 = posy + (r->fract->y2 - r->fract->y1);
 		fract(r->fract->zoom_level, *r);
 		mlx_put_image_to_window(r->mlx_ptr, r->win_ptr, r->img.img_ptr, 0, 0);
-		}
+	}
 	return (0);
 }
 
@@ -64,6 +64,19 @@ int			test_args(int ac, char **av, t_mlx *r)
 	if (r->code_f != 1 && r->code_f != 2 && r->code_f != 3)
 		return (0);
 	return (1);
+}
+
+int			mouse_moove(int x, int y, t_mlx *r)
+{
+	if (x < 0 || x > WIDTH || y < 0 || y > HEIGHT)
+		return (0);
+	r->fract->zoom_level++;
+	r->fract->cr = -0.7 + (double)x / 1000;
+	r->fract->ci = 0.27015 + (double)y / 1000;
+	fract(r->fract->zoom_level, *r);
+	mlx_clear_window(r->mlx_ptr, r->win_ptr);
+	mlx_put_image_to_window(r->mlx_ptr, r->win_ptr, r->img.img_ptr, 0, 0);
+	return (0);
 }
 
 int			main(int ac, char **av)
@@ -78,6 +91,7 @@ int			main(int ac, char **av)
 	}
 	fract(0, r);
 	mlx_put_image_to_window(r.mlx_ptr, r.win_ptr, r.img.img_ptr, 0, 0);
+	mlx_hook(r.win_ptr, 6, (1L << 6), mouse_moove, &r);
 	mlx_key_hook(r.win_ptr, interrupt, &r);
 	mlx_mouse_hook(r.win_ptr, zoom, &r);
 	mlx_loop(r.mlx_ptr);

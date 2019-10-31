@@ -22,6 +22,8 @@ int		init_values(int zoom_level, t_mandel *m)
 		m->y1 = -1.2;
 		m->y2 = 1.2;
 		m->iter_max = 50;
+		m->cr = 0;
+		m->ci = 0;
 	}
 	return (1);
 }
@@ -51,8 +53,6 @@ int			julia(int x, int y, t_mandel m, t_mlx r)
 {
 	m.zr = x * (m.x2 - m.x1) / WIDTH + m.x1;
 	m.zi = y * (m.x2 - m.x1) / HEIGHT + m.y1;
-	m.cr = 0;
-	m.ci = 0;
 	m.i = 0;
 	while (m.zr * m.zr + m.zi * m.zi < 4 && m.i < m.iter_max)
 	{
