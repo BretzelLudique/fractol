@@ -91,7 +91,8 @@ int			main(int ac, char **av)
 	}
 	fract(0, r);
 	mlx_put_image_to_window(r.mlx_ptr, r.win_ptr, r.img.img_ptr, 0, 0);
-	mlx_hook(r.win_ptr, 6, (1L << 6), mouse_moove, &r);
+	if (r.code_f == 1)
+		mlx_hook(r.win_ptr, 6, (1L << 6), mouse_moove, &r);
 	mlx_key_hook(r.win_ptr, interrupt, &r);
 	mlx_mouse_hook(r.win_ptr, zoom, &r);
 	mlx_loop(r.mlx_ptr);
