@@ -17,10 +17,10 @@ int		init_values(int zoom_level, t_mandel *m)
 	if (!zoom_level)
 	{
 		m->zoom_level = 0;
-		m->x1 = -2.1;
-		m->x2 = 0.6;
-		m->y1 = -1.2;
-		m->y2 = 1.2;
+		m->x1 = -3;
+		m->x2 = 3;
+		m->y1 = -3;
+		m->y2 = 3;
 		m->iter_max = 50;
 		m->cr = 0;
 		m->ci = 0;
@@ -68,6 +68,27 @@ int			julia(int x, int y, t_mandel m, t_mlx r)
 	return (1);
 }
 
+int		tricorn(int x, int y, t_mandel m, t_mlx r)
+{
+	m.cr = x * (m.x2 - m.x1) / WIDTH + m.x1;
+	m.ci = y * (m.x2 - m.x1) / HEIGHT + m.y1;
+	m.zr = 0;
+	m.zi = 0;
+	m.i = 0;
+	while (m.zr * m.zr + m.zi * m.zi < 4 && m.i < m.iter_max)
+	{
+		m.tmp = m.zr;
+		m.zr = m.zr * m.zr - m.zi * m.zi + m.cr;
+		m.zi = -2 * m.zi * m.tmp + m.ci;
+		m.i++;
+	}
+	if (m.i == m.iter_max)
+		draw_pixel(x, y, 0xffffff, r);
+	else
+		draw_pixel(x, y, m.i * 255 / m.iter_max, r);
+	return (1);
+}
+
 int			fract(int zoom_level, t_mlx r)
 {
 	int				x;
@@ -84,7 +105,8 @@ int			fract(int zoom_level, t_mlx r)
 				julia(x, y, *r.fract, r);
 			else if (r.code_f == 2)
 				mandel(x, y, *r.fract, r);
-			//else if (r.code_f == 2)
+			else if (r.code_f == 3)
+				tricorn(x, y, *r.fract, r);
 		}
 	}
 	return (1);
