@@ -18,7 +18,7 @@ static t_mlx	create_mlx(void)
 	t_fract		*f;
 
 	r.mlx_ptr = mlx_init();
-	r.win_ptr = mlx_new_window(r.mlx_ptr, WIDTH, HEIGHT, "TEST");
+	r.win_ptr = mlx_new_window(r.mlx_ptr, WIDTH, HEIGHT, "fractol");
 	r.img.img_ptr = mlx_new_image(r.mlx_ptr, WIDTH, HEIGHT);
 	r.img.img_str = mlx_get_data_addr(r.img.img_ptr,
 			&r.img.bpp, &r.img.size_line, &r.img.endian);
@@ -85,7 +85,7 @@ int				main(int ac, char **av)
 	r = create_mlx();
 	if (!test_args(ac, av, &r))
 	{
-		ft_putendl("usage: ./fractol [1:julia, 2:mandelbrot, 3]");
+		ft_putendl("usage: ./fractol [1:julia, 2:mandelbrot, 3:tricorn]");
 		return (0);
 	}
 	fract(0, r);

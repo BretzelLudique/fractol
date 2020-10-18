@@ -17,12 +17,12 @@ static int	move_x(int key, t_mlx *r)
 	double	dx;
 
 	dx = (r->fract->x2 - r->fract->x1) / 5;
-	if (key == 65361)
+	if (key == 123)
 	{
 		r->fract->x1 -= dx;
 		r->fract->x2 -= dx;
 	}
-	if (key == 65363)
+	if (key == 124)
 	{
 		r->fract->x1 += dx;
 		r->fract->x2 += dx;
@@ -35,12 +35,12 @@ static int	move_y(int key, t_mlx *r)
 	double	dy;
 
 	dy = (r->fract->y2 - r->fract->y1) / 5;
-	if (key == 65362)
+	if (key == 125)
 	{
 		r->fract->y1 += dy;
 		r->fract->y2 += dy;
 	}
-	if (key == 65364)
+	if (key == 126)
 	{
 		r->fract->y1 -= dy;
 		r->fract->y2 -= dy;
@@ -50,9 +50,9 @@ static int	move_y(int key, t_mlx *r)
 
 static int	key_move(int key, t_mlx *r)
 {
-	if (key == 65361 || key == 65363)
+	if (key == 123 || key == 124)
 		move_x(key, r);
-	else if (key == 65362 || key == 65364)
+	else if (key == 125 || key == 126)
 		move_y(key, r);
 	r->fract->mod = 1;
 	fract(r->fract->mod, *r);
@@ -64,10 +64,9 @@ static int	key_move(int key, t_mlx *r)
 int			key_events(int key, t_mlx *r)
 {
 	ft_putnbr(key);
-	ft_putchar('\n');
-	if (key >= 65361 && key <= 65364)
+	if (key == 123 || key == 124 || key == 125 || key == 126)
 		key_move(key, r);
-	if (key == 65307)
+	if (key == 53)
 	{
 		mlx_destroy_image(r->mlx_ptr, r->img.img_ptr);
 		mlx_destroy_window(r->mlx_ptr, r->win_ptr);
