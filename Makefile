@@ -6,7 +6,7 @@
 #    By: czhang <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/07 19:51:13 by czhang            #+#    #+#              #
-#    Updated: 2019/10/29 20:37:33 by czhang           ###   ########.fr        #
+#    Updated: 2019/11/02 19:23:36 by czhang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,13 +16,8 @@ LIB = libft/libft.a
 
 FILE =	main.c\
 		draw.c\
-		key_esc.c\
-		mandelbrot.c\
-		#get_next_line.c\
-		parse.c\
-		#resize.c\
-		tab_type.c\
-		coord.c\#
+		keys.c\
+		fract.c
 
 INC = -I libft/includes
 
@@ -39,7 +34,7 @@ RM = rm -f
 all: $(NAME)
 
 $(NAME) : $(LIB) $(OBJ)
-	$(CC) -o $@ $(OBJ) -L libft/ -lft -lmlx -framework OpenGL -framework Appkit
+	$(CC) -o $@ $(OBJ) -L libft/ -lft -lmlx -lXext -lX11
 
 $(LIB) :
 	make -C libft/ all
@@ -50,6 +45,7 @@ objs/%.o: %.c
 
 clean:
 	$(RM) $(OBJ)
+	make -C libft/ clean
 
 fclean: clean
 	$(RM) $(NAME)
